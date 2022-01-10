@@ -2,7 +2,7 @@ Function Invoke-TeamsMSG {
 	param( [string[]]$To, [string]$Message ) 
 	$To = [system.web.httputility]::URLENCODE($To -join ',')
 	$Message = [system.web.httputility]::URLENCODE($Message)
-	$Command = "/l/chat/0/0?users=$To&TopicName=Blah&message=$Message"
+	$Command = "/l/chat/0/0?users=$To&message=$Message"
 	$Null = start-process msteams:$Command 
 }
 Function Invoke-TeamsCall {
