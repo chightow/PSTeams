@@ -6,9 +6,10 @@ Function Invoke-TeamsMSG {
 	$Null = start-process msteams:$Command 
 }
 Function Invoke-TeamsCall {
-	param ( [string[]]$To )
+	param ( [string[]]$To,[switch]$Video)
 	$To = [system.web.httputility]::URLENCODE($To -join ',')
-	$Command = "/l/call/0/0?users=$To"
+	$Command = "/l/call/0/0?users=$To" 
+	if($Video) { $Command = $Command+ "&withVideo=true" }
 	$Null = start-process msteams:$Command
 }
 Function Invoke-TeamsScheduleMeeting {
